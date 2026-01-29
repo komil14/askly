@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/askly-api/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/askly-api/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/askly-api",
+  "projects": {
+    "askly": {
+      "type": "application",
+      "root": "apps/askly-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/askly-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/askly-api/tsconfig.app.json"
+      }
+    },
+    "askly-batch": {
+      "type": "application",
+      "root": "apps/askly-batch",
+      "entryFile": "main",
+      "sourceRoot": "apps/askly-batch/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/askly-batch/tsconfig.app.json"
+      }
+    }
   }
 }
